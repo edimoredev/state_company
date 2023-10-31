@@ -1,0 +1,43 @@
+erDiagram
+
+
+owner{
+int id_owner PK
+str name
+str address
+str photo
+str birthay
+}
+
+property{
+int id_property PK
+int id_owner FK "Ref:owner(id_owner)"
+str name
+str address
+float price
+str code_internal
+int year
+}
+
+property_image{
+int id_property_image PK
+int id_property FK "Ref:property(id_property)"
+str file
+bool enable
+}
+
+property_trace{
+int id_trace PK
+int id_property FK "Ref:property(id_property)"
+str date_sale
+str name
+float value
+float tax
+}
+
+
+
+
+owner }o--||property : id_owner
+property }o--|| property_image:id_property
+property }o--|| property_trace : id_property
