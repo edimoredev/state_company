@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status
-from app.schemas.property_schema import property_schema, properties_schema
+from app.schemas.property_schema import  properties_schema
 #>>> controllers
 from app.controllers.property_controller import PropertyController
 #>>> models
@@ -8,7 +8,7 @@ from app.models.property_model import Property
 
 # add route propertyRouter, prefix, tags and response
 propertyRouter = APIRouter(prefix="/property",
-                       tags=["property"],
+                       tags=["Property"],
                        responses={status.HTTP_404_NOT_FOUND: {"message": "Not Found"}})
 
 
