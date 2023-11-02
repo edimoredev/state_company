@@ -17,18 +17,18 @@ async def create_property(property: PropertyModel):
     Create a new property in the database.
     :param property: Data of the property to create.
     """
-    # Check if the owner already exists
+    # Check if the property already exists
     existing_property = properties_schema(PropertyController().search_property_by_id(property.id_property))
-    # Valid existing_owner
+    # Valid existing_property
     if existing_property:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Owner already exists"
+            detail="Property already exists"
         )
     # Convert to a dictionary
-    propert_dict = dict(property)
+    property_dict = dict(property)
     # Create the property using the controller
-    PropertyController().create_property(propert_dict)
+    PropertyController().create_property(property_dict)
     return property
 
 # Define a route to get all properties
@@ -40,22 +40,22 @@ async def get_all_property():
     properties = properties_schema(PropertyController().get_all_property())
     return properties
 
-# Define a route to get an owner by their ID
+# Define a route to get an property by their ID
 @propertyRouter.get('/{id_property}')
-async def get_owner(id_property: int):
+async def get_property(id_property: int):
     """
-    Get an owner by their ID.
+    Get an property by their ID.
 
-    :param id_owner: ID of the owner to search for.
+    :param id_property: ID of the property to search for.
     """
-    # Search for an owner by their ID using the controller
-    owner = properties_schema(PropertyController().search_property_by_id(id_property))
-    # Valid owner and retur message
-    if not owner:
+    # Search for an property by their ID using the controller
+    property = properties_schema(PropertyController().search_property_by_id(id_property))
+    # Valid property and retur message
+    if not property:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Owner not found"
+            detail="Property not found"
         )
-    return owner
+    return property
     
   
