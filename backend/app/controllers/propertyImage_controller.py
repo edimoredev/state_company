@@ -5,7 +5,7 @@ import pymongo
 
 class PropertyImageController():
     """
-    Class that manages operations related to property in the database.
+    Class that manages operations related to propertyImage in the database.
     """
     def create_propertyImage(self, id_property_image):
         """
@@ -20,12 +20,12 @@ class PropertyImageController():
 
     def get_all_propertyImage(self):
         """
-        Retrieves a list of all property from the database.
-        :return: A list of property dictionaries.
+        Retrieves a list of all propertyImage from the database.
+        :return: A list of propertyImage dictionaries.
         """
         try:
-            property = conn.property_image.find().sort("id_property_image", pymongo.ASCENDING)
-            return list(property)
+            propertyImage = conn.property_image.find().sort("id_property_image", pymongo.ASCENDING)
+            return list(propertyImage)
         except:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Database connection not found")
@@ -37,8 +37,8 @@ class PropertyImageController():
         :return: The propertyImage dictionary if found, or None.
         """
         try:
-            property = conn.property_image.find({'id_property_image': id_property_image})
-            return property
+            propertyImage = conn.property_image.find({'id_property_image': id_property_image})
+            return propertyImage
         except:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Database connection not found")
