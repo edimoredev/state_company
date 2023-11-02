@@ -1,3 +1,5 @@
+from typing import List
+
 def property_schema(property)-> dict:
     return {
         "id_property" : property["id_property"],
@@ -9,5 +11,5 @@ def property_schema(property)-> dict:
         "id_owner": property["id_owner"]
     }
 
-def properties_schema(properties)-> list:
+def properties_schema(properties: List[dict])-> List[dict]:
     return [property_schema(property) for property in properties]
