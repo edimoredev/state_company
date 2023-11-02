@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import property_route, owner_route
+from app.routers import propertyImage_route, property_route, owner_route
 
 # Create an instance of the FastAPI application
 app = FastAPI()
@@ -20,5 +20,5 @@ app.add_middleware(
 # includes the defined routers
 app.include_router(owner_route.ownerRouter)   # Include routes related to owners
 app.include_router(property_route.propertyRouter)  # Include routes related to properties
-
+app.include_router(propertyImage_route.propertyImageRouter)# Include routes related to propertyImage
 
