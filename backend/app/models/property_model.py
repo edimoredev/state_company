@@ -1,6 +1,9 @@
 from pydantic import BaseModel
 
-class Property(BaseModel):
+class PropertyModel(BaseModel):
+    """
+    Class representing an property.
+    """
     id_property: int
     name: str
     address:str
