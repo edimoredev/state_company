@@ -7,13 +7,13 @@ class PropertyImageController():
     """
     Class that manages operations related to propertyImage in the database.
     """
-    def create_propertyImage(self, id_property_image):
+    def create_propertyImage(self, propertyImage: dict):
         """
         Creates a new propertyImage in the database.
-        :param id_property_image: A dictionary representing the propertyImage to be created.
+        :param propertyImage: A dictionary representing the propertyImage to be created.
         """
         try:
-            conn.property_image.insert_one(id_property_image)
+            conn.property_image.insert_one(propertyImage)
         except:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Database connection not found")
@@ -42,3 +42,8 @@ class PropertyImageController():
         except:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Database connection not found")
+        
+    # Función de validación de extensión de archivo
+    def allowed_file(self, filename):
+        allowed_extensions = {'png', 'jpg', 'jpeg'}
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
