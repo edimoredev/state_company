@@ -7,7 +7,7 @@ class PropertyController():
     """
     Class that manages operations related to property in the database.
     """
-    def create_property(self, property):
+    def create_property(self, property: dict):
         """
         Creates a new property in the database.
         :param property: A dictionary representing the property to be created.
@@ -17,6 +17,24 @@ class PropertyController():
         except:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Database connection not found")
+
+    def update_price(self, id_property: int, new_price: float):
+        """
+        update the price for property in the database.
+        :param price: A dictionary representing the property to be update.
+        :return: A list of property update dictionaries.
+        """
+        try:
+            # Define el filtro para encontrar la propiedad por su ID
+            filter = {"id_property": id_property}
+            # Define las modificaciones para actualizar el precio
+            update = {"$set": {"price": new_price}}
+            # Crea una actualización con los campos y valores que deseas cambiar
+            conn.property.update_one(filter, update)
+        except:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail="Database connection not found")
+
 
     def get_all_property(self):
         """
