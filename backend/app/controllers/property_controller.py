@@ -1,5 +1,5 @@
 from fastapi import HTTPException, status
-from app.adapters.database.dbmongo import conn
+from adapters.database.dbmongo import conn
 import pymongo
 
 
