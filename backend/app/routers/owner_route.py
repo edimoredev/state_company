@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, status
-from app.schemas.owner_schema import owners_schema
+from schemas.owner_schema import owners_schema
 #>>> Import controllers
-from app.controllers.owner_controller import OwnerController
+from controllers.owner_controller import OwnerController
 #>>> Import models
-from app.models.owner_model import OwnerModel
+from models.owner_model import OwnerModel
 
 # Create a router to handle operations related to owners
 ownerRouter = APIRouter(
