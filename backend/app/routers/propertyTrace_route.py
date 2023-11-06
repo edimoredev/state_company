@@ -1,9 +1,11 @@
 from fastapi import APIRouter, HTTPException, status
-from app.schemas.propertyTrace_schema import propertiesTrace_schema
+from schemas.propertyTrace_schema import propertiesTrace_schema
+from schemas.property_schema import properties_schema
 #>>> Import controllers
-from app.controllers.propertyTrace_controller import PropertyTraceController
+from controllers.propertyTrace_controller import PropertyTraceController
+from controllers.property_controller import PropertyController
 #>>> Import models
-from app.models.propertyTrace_model import PropertyTraceModel
+from models.propertyTrace_model import PropertyTraceModel
 
 # Create a router to handle operations related to propertyTrace
 propertyTraceRouter = APIRouter(prefix="/propertyTrace",
@@ -23,6 +25,14 @@ async def create_propertyTrace(propertyTrace: PropertyTraceModel):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="PropertyImage already exists"
+        )
+    
+    # Check if the property not already exists
+    existing_property = properties_schema(PropertyController().search_property_by_id(propertyImage.id_property))
+    if not existing_property:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Property does not exists"
         )
     # Convert to a dictionary
     propertyTrace_dict = dict(propertyTrace)
@@ -45,7 +55,7 @@ async def get_property(id_property_trace: int):
     """
     Get an propertyTrace by their ID.
 
-    :param id_property_trace: ID of the propertyTraceto search for.
+    :param id_property_trace: ID of the propertyTrace to search for.
     """
     # Search for an propertyImage by their ID using the controller
     propertyTrace = propertiesTrace_schema(PropertyTraceController().search_propertyTrace_by_id(id_property_trace))
