@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, status
-from app.schemas.property_schema import  properties_schema
-from app.schemas.owner_schema import owners_schema
+from schemas.property_schema import  properties_schema
+from schemas.owner_schema import owners_schema
 #>>> Import controllers
-from app.controllers.property_controller import PropertyController
-from app.controllers.owner_controller import OwnerController
+from controllers.property_controller import PropertyController
+from controllers.owner_controller import OwnerController
 #>>> Import models
-from app.models.property_model import PropertyModel
+from models.property_model import PropertyModel
 
 
 # Create a router to handle operations related to property
