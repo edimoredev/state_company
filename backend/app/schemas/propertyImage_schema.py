@@ -3,7 +3,7 @@ from typing import List
 def propertyImage_schema(propertyImage)-> dict:
     return {
         "id_property_image" : propertyImage["id_property_image"],
-        "file" : propertyImage["file"],
+        "file_name" : propertyImage["file_name"],
         "enable" : propertyImage["enable"],
         "id_property" : propertyImage["id_property"]
     }
