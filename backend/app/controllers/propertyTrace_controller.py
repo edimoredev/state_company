@@ -1,18 +1,18 @@
 from fastapi import HTTPException, status
-from app.adapters.database.dbmongo import conn
+from adapters.database.dbmongo import conn
 import pymongo
 
 class PropertyTraceController():
     """
     Class that manages operations related to propertyTrace in the database.
     """
-    def create_propertyTrace(self, id_property_trace):
+    def create_propertyTrace(self, propertyTrace: dict):
         """
         Creates a new propertyTrace in the database.
-        :param id_property_trace: A dictionary representing the propertyTrace to be created.
+        :param propertyTrace: A dictionary representing the propertyTrace to be created.
         """
         try:
-            conn.property_trace.insert_one(id_property_trace)
+            conn.property_trace.insert_one(propertyTrace)
         except:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Database connection not found")
