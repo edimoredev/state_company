@@ -24,11 +24,11 @@ async def create_propertyTrace(propertyTrace: PropertyTraceModel):
     if existing_propertyTrace:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="PropertyImage already exists"
+            detail="PropertyTrace already exists"
         )
     
     # Check if the property not already exists
-    existing_property = properties_schema(PropertyController().search_property_by_id(propertyImage.id_property))
+    existing_property = properties_schema(PropertyController().search_property_by_id(propertyTrace.id_property))
     if not existing_property:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -57,7 +57,7 @@ async def get_property(id_property_trace: int):
 
     :param id_property_trace: ID of the propertyTrace to search for.
     """
-    # Search for an propertyImage by their ID using the controller
+    # Search for an propertyTrace by their ID using the controller
     propertyTrace = propertiesTrace_schema(PropertyTraceController().search_propertyTrace_by_id(id_property_trace))
     # Valid propertyTrace and retur message
     if not propertyTrace:
