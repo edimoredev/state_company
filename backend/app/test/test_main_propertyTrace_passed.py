@@ -18,7 +18,7 @@ def test_create_propertyTrace():
         "name": "test_100",
         "value": 100,
         "tax": 1.1,
-        "id_property": 1,
+        "id_property": 100,
         # Add other fields as required by your PropertyTraceModel
     }
 
@@ -37,12 +37,12 @@ def test_create_propertyTrace():
 def test_create_propertyTrace_existing_propertyTrace():
     # Define test data for an propertyTrace that already exists
     existing_propertyTrace_data = {
-        "id_property_trace": 1,
+        "id_property_trace": 100, 
         "date_sale": "2-11-2023",
-        "name": "trace1",
-        "value": 500,
+        "name": "test_100",
+        "value": 100,
         "tax": 1.1,
-        "id_property": 1,
+        "id_property": 100,
         # Add other fields as required by your PropertyTraceModel
     }
 
@@ -79,18 +79,18 @@ def test_get_propertyTrace():
 def test_get_propertyTrace_by_id():
     """_function get only one propertyTrace
     """
-    id_property_trace = 1  # Replace with a valid ID in your database
+    id_property_trace = 100  # Replace with a valid ID in your database
     response = client.get(f"/propertyTrace/{id_property_trace}")
     # Verify that the response has a status code of 200
     assert response.status_code == status.HTTP_200_OK
     # Replace with the actual data you expect in the response
     expected_data = {
-        "id_property_trace": 1,
+        "id_property_trace": 100, # Provide unique propertyTrace data for testing
         "date_sale": "2-11-2023",
-        "name": "trace1",
-        "value": 500,
+        "name": "test_100",
+        "value": 100,
         "tax": 1.1,
-        "id_property": 1,
+        "id_property": 100,
     }
     response_data = response.json()  # Get the JSON content of the response
     # Verify that the response is a non-empty list
