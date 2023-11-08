@@ -32,7 +32,7 @@ async def create_propertyTrace(propertyTrace: PropertyTraceModel):
     if not existing_property:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Property does not exists"
+            detail="PropertyTrace does not exists"
         )
     # Convert to a dictionary
     propertyTrace_dict = dict(propertyTrace)
