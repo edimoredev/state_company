@@ -19,7 +19,7 @@ def test_create_property():
         "price": 200.0,
         "code_internal": "12-04-1992",
         "year": 2023,
-        "id_owner": 1
+        "id_owner": 100
 
         # Add other fields as required by your PropertyModel
     }
@@ -37,13 +37,13 @@ def test_create_property():
 def test_create_property_existing_property():
     # Define test data for an property that already exists
     existing_property_data = {
-        "id_property":1,
-        "name":"prueba",
-        "address":"prueba",
-        "price":30000,
-        "code_internal":"200",
-        "year":2023,
-        "id_owner":1
+        "id_property": 100, 
+        "name": "John Doe",
+        "address": "Mz1 cs 12",
+        "price": 200.0,
+        "code_internal": "12-04-1992",
+        "year": 2023,
+        "id_owner": 100
         # Add other fields as required by your PropertyModel
     }
 
@@ -65,7 +65,7 @@ def test_update_property_():
         "price": 3000000.0,
         "code_internal": "A300",
         "year": 2024,
-        "id_owner": 1
+        "id_owner": 100
 
         # Add other fields as required by your PropertyModel
     }
@@ -103,19 +103,19 @@ def test_get_property():
 def test_get_property_by_id():
     """_function get only one property
     """
-    property_id = 1  # Replace with a valid ID in your database
+    property_id = 100  # Replace with a valid ID in your database
     response = client.get(f"/property/{property_id}")
     # Verify that the response has a status code of 200
     assert response.status_code == status.HTTP_200_OK
     # Replace with the actual data you expect in the response
     expected_data = {
-        "id_property": 1,  # Provide unique property data for testing
-        "name": "prueba",
-        "address": "prueba",
-        "price": 20000,
-        "code_internal": "200",
+        "id_property": 100,  # Provide unique property data for testing
+        "name": "John Doe",
+        "address": "Mz1 cs 12",
+        "price": 3000000,
+        "code_internal": "12-04-1992",
         "year": 2023,
-        "id_owner": 1
+        "id_owner": 100
     }
     response_data = response.json()  # Get the JSON content of the response
     # Verify that the response is a non-empty list
