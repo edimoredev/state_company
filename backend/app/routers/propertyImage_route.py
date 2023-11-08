@@ -9,7 +9,7 @@ from controllers.property_controller import PropertyController
 from models.propertyImage_model import propertyImageOut, PropertyImageModel
 
 
-PATH_FILES =  os.getcwd() + "\\app\\asset\\img\\"
+PATH_FILES =  os.getcwd() + "\\asset\\img\\"
 
 # Create a router to handle operations related to propertyImage
 propertyImageRouter = APIRouter(prefix="/propertyImage",
@@ -45,7 +45,6 @@ async def create_propertyImage(propertyImage:PropertyImageModel = Depends(), ima
     # Convert to a dictionary
     propertyImage_dict = dict(propertyImage)
     propertyImage_dict['file_name'] = image.filename
-    print (propertyImage_dict)
     # Create the propertyImage using the controller
     PropertyImageController().create_propertyImage(propertyImage_dict)
     with open(PATH_FILES + image.filename, "wb") as img:
