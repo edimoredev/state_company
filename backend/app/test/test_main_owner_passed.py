@@ -33,8 +33,8 @@ def test_create_owner():
 def test_create_owner_existing_owner():
     # Define test data for an owner that already exists
     existing_owner_data = {
-        "id_owner": 1,
-        "name": "Edison Monreno Capera",
+        "id_owner": 100,  # Provide unique owner data for testing
+        "name": "John Doe",
         "address": "Mz1 cs 12",
         "photo": "2",
         "birthday": "12-04-1992"
@@ -73,14 +73,14 @@ def test_get_owner():
 def test_get_owner_by_id():
     """_function get only one owner
     """
-    owner_id = 1  # Replace with a valid ID in your database
+    owner_id = 100  # Replace with a valid ID in your database
     response = client.get(f"/owner/{owner_id}")
     # Verify that the response has a status code of 200
     assert response.status_code == status.HTTP_200_OK
     # Replace with the actual data you expect in the response
     expected_data = {
-        "id_owner": 1,
-        "name": "Edison Monreno Capera",
+        "id_owner": 100, 
+        "name": "John Doe",
         "address": "Mz1 cs 12",
         "photo": "2",
         "birthday": "12-04-1992"
