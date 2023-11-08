@@ -79,6 +79,7 @@ en CMD verificamos la version*
 ![image](https://github.com/edimoredev/state_company/assets/125479887/f49cafb7-05b7-4b70-becd-6ef1529fe83b)
 
 
+### *Agradecimientos a Million and Up*
 
 
 
